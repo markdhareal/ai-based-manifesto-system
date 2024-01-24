@@ -12,7 +12,7 @@ class MenuFrame(ctk.CTkFrame):
     def create_widgets(self):
 
         # CREATE WIDGETS
-        manage_boat_button = FunctionalWidgets.create_button(self, "Manage Boat", height=40)
+        manage_boat_button = FunctionalWidgets.create_button(self, "Manage Boat", height=42)
         manage_passengers_button = FunctionalWidgets.create_button(self, "Manage Passengers", height=45)
         enlist_button = FunctionalWidgets.create_button(self, "Enlist Passenger", height=45)
 
