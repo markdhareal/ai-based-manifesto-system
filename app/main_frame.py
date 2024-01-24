@@ -1,13 +1,19 @@
 import customtkinter as ctk
+from app.menu_frame import MenuFrame
 
 class App(ctk.CTk):
-    def __init__(self, name, title):
+    def __init__(self,title):
         super().__init__()
-        self.name = name
-        self.title(title)
-        self.state('zoomed')
-        self.mainloop()
 
-    def print_this(self):
-        print(self.name)
-        print(self.title)
+        self.title(title)
+
+        self.width = self.winfo_screenwidth()
+        self.height = self.winfo_screenheight()
+
+        self.geometry(f'{self.width}x{self.height}')
+        self.minsize(self.width, self.height)
+
+        # Menu Frame
+        self.menu = MenuFrame(self)
+
+        self.mainloop()
