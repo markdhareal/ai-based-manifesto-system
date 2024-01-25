@@ -13,8 +13,8 @@ class MenuFrame(ctk.CTkFrame):
     def create_widgets(self):
 
         # IMAGES FOR BUTTONS
-        boat_image = ctk.CTkImage(Image.open("images/boat-toy.png"))
-        passenger_image = ctk.CTkImage(Image.open("images/passenger.png"))
+        boat_image = ctk.CTkImage(Image.open("images/boat.png"))
+        passenger_image = ctk.CTkImage(Image.open("images/registration.png"))
         face_recognition_image = ctk.CTkImage(Image.open("images/face-recognition.png"))
 
         # CREATE WIDGETS
