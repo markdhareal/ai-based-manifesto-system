@@ -9,9 +9,10 @@ class ManageBoat(ctk.CTk):
         self.width = self.winfo_screenwidth()
         self.height = self.winfo_screenheight()
 
-        self.geometry(f'{self.width}x{self.height}')
+        self.geometry("%dx%d+0+0" % (self.width, self.height))
         self.minsize(self.width, self.height)
 
         self.manage_boat_frame = ManageBoatFrame(self)
+        self.after(0, lambda:self.state("zoomed"))
 
         self.mainloop()
