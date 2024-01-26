@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from frames.manage_boat_frame import ManageBoatFrame
 
 class ManageBoat(ctk.CTk):
     def __init__(self, title):
@@ -10,5 +11,7 @@ class ManageBoat(ctk.CTk):
 
         self.geometry(f'{self.width}x{self.height}')
         self.minsize(self.width, self.height)
+
+        self.manage_boat_frame = ManageBoatFrame(self)
 
         self.mainloop()
