@@ -3,6 +3,8 @@ import customtkinter as ctk
 from PIL import Image, ImageTk
 from utils.functional_widgets import FunctionalWidgets
 from app.manage_boat_app import ManageBoat
+from app.registration_app import RegistrationApp
+from app.enlist_passenger_app import EnlistPassengerApp
 
 class MenuFrame(ctk.CTkFrame):
     def __init__(self, parent):
@@ -21,8 +23,8 @@ class MenuFrame(ctk.CTkFrame):
 
         # CREATE WIDGETS
         manage_boat_button = FunctionalWidgets.create_button(self, "Manage Boat", height=42,image=boat_image, compound="left", anchor="w", command=self.go_to_manage_boat_app)
-        manage_passengers_button = FunctionalWidgets.create_button(self, "Registration", height=45, image=passenger_image, compound="left", anchor="w")
-        enlist_button = FunctionalWidgets.create_button(self, "Enlist Passenger", height=45, image=face_recognition_image, compound="left", anchor="w")
+        manage_passengers_button = FunctionalWidgets.create_button(self, "Registration", height=45, image=passenger_image, compound="left", anchor="w", command=self.go_to_registration_app)
+        enlist_button = FunctionalWidgets.create_button(self, "Enlist Passenger", height=45, image=face_recognition_image, compound="left", anchor="w", command=self.go_to_enlist_passenger_app)
 
         #CREATE LAYOUT
         manage_boat_button.pack(side="top", expand=True)
@@ -30,6 +32,10 @@ class MenuFrame(ctk.CTkFrame):
         enlist_button.pack(side="top", expand=True)
 
     def go_to_manage_boat_app(self):
-            self.manage_boat = ManageBoat("Manage Boat")
-        
-        
+        self.manage_boat = ManageBoat("Manage Boat")
+
+    def go_to_registration_app(self):
+        self.registration_app = RegistrationApp("Registration")
+
+    def go_to_enlist_passenger_app(self):
+        self.enlist_passenger_app = EnlistPassengerApp("Enlist Passengers")
