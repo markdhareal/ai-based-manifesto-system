@@ -12,5 +12,9 @@ class FunctionalWidgets(ctk.CTk):
         return label
     
     def create_entry(window, **kwargs):
-        entry = ctk.CTkEntry(window, **kwargs)
+        entry = ctk.CTkEntry(window, border_width=1, **kwargs)
         return entry
+
+    def create_text_box(window,**kwargs):
+        text_box = ctk.CTkTextbox(window, width=300, height=200, border_width=1, **kwargs)
+        return text_box
