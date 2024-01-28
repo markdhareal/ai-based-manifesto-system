@@ -5,9 +5,6 @@ class ManageBoatTextBox(ctk.CTkFrame):
     def __init__(self,parent):
         super().__init__(parent)
 
-        self.parent = parent
-        self.pack(side="top",fill="both", expand=True)
-
     def text_box_manage_boat(self, text):
 
         manage_boat_label_text_box = FunctionalWidgets.create_label(self,text)
