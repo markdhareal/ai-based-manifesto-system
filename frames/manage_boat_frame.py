@@ -1,6 +1,4 @@
 import customtkinter as ctk
-from utils.manage_boat_label_entry import LabelEntryManageBoat
-from utils.manage_boat_textbox import ManageBoatTextBox
 from frames.manage_boat_registration_frame import ManageBoatRegistrationFrame
 
 
