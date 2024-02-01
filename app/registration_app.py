@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from frames.registration_frame import RegistrationFrame
+from frames.registration_main_frame import RegistrationMainFrame
 
 class RegistrationApp(ctk.CTk):
     def __init__(self, title):
@@ -13,6 +14,7 @@ class RegistrationApp(ctk.CTk):
         self.minsize(self.width, self.height)
 
         self.registration_frame = RegistrationFrame(self)
+        self.registration_main = RegistrationMainFrame(self)
         self.after(0, lambda:self.state("zoomed"))
 
         self.mainloop()
