@@ -24,25 +24,16 @@ class LabelEntryManageBoat(ctk.CTkFrame):
             self.entry_widget.append(manage_boat_entry)
 
     def manage_button(self, button_info):
-        for i, (text, row_btn_one, cols_button_one,row_button_two, cols_button_two,command_one_1, command_two_2) in enumerate(button_info):
+        for i, (text_one, text_two, button_size, row_btn_one, cols_button_one,row_button_two, cols_button_two,command_one_1, command_two_2) in enumerate(button_info):
             # CREATE WIDGETS
-            button_one = FunctionalWidgets.create_button(self,text,command=command_one_1)
-            button_two = FunctionalWidgets.create_button(self, text, command=command_two_2)
+            button_one = FunctionalWidgets.create_button(self, text_one,height=button_size, command=command_one_1)
+            button_two = FunctionalWidgets.create_button(self, text_two,height=button_size, command=command_two_2)
 
             self.columnconfigure((0,1), weight=1)
 
             # CREATE LAYOUT
             button_one.grid(row=row_btn_one,column=cols_button_one,padx=20,pady=25)
             button_two.grid(row=row_button_two,column=cols_button_two,padx=20,pady=25)
-
-    # def button_manage_boat(self, text, row_btn_one, cols_button_one,row_button_two, cols_button_two,command_one, command_two):
-
-    #     button_one = FunctionalWidgets.create_button(self, text, height=42, command=command_one)
-    #     button_two = FunctionalWidgets.create_button(self,text, height=42,command=command_two)
-
-
-    #     button_one.grid(row=row_btn_one,column=cols_button_one, padx=20, pady=25)
-    #     button_two.grid(row=row_button_two,column=cols_button_two,pady=25)
 
     def get_entry_values(self):
         return [entry.get() for entry in self.entry_widget]
