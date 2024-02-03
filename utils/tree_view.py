@@ -8,12 +8,17 @@ class MyTreeView(ctk.CTkFrame):
         super().__init__(parent)
 
         self.my_tree = ttk.Treeview(self)
+        self.set_up_style()
+        self.create_tree_view([])
+
+    def set_up_style(self):
+        style = ttk.Style(self)
+        style.theme_use('alt')
+        style.configure('Treeview', font=("Arial Bold", 15),background="gray14", foreground="#fff", fieldbackground="gray14", rowheight=50)
+        style.configure('Treeview.Heading', font=("Arial Bold", 15))
+        style.map('Treeview', background=[('selected', '#3B8ED0')])
 
     def create_tree_view(self, tree_info):
-    
-        style = ttk.Style()
-        style.theme_use('clam')
-        style.configure("Treeview", font=("Arial Bold", 15))
 
         self.my_tree['columns'] = tuple(tree_info)
 
@@ -29,6 +34,8 @@ class MyTreeView(ctk.CTkFrame):
 
         self.my_tree.pack(fill="both", expand=True)
 
+    def add_item(self, values):
+        self.my_tree.insert("", "end", values=values)
 
 
     #     self.pack(fill="both", expand=True)
