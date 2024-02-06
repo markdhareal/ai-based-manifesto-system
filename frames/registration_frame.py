@@ -7,11 +7,12 @@ class RegistrationFrame(ctk.CTkFrame):
 
         self.place(x=0, y=0, relwidth=0.3, relheight=1)
         self.create_widgets()
-        # ctk.CTkLabel(self, fg_color="red").pack(fill="both", expand=True)
 
     def create_widgets(self):
         
         self.manage_registration = LabelEntryManageBoat(self)
+        combo_value_age = ["Male", "Female"]
+        combo_value_sex = ["9-10", "11-15"]
 
         info_labels_entries = [
             ("Name:", 0,0,0,1),
@@ -22,11 +23,20 @@ class RegistrationFrame(ctk.CTkFrame):
 
         info_labels_combo_box = [
             # Gonna put the combo box value here
-            ("Age:",1,0,1,1),
-            ("Sex", 2,0,2,1)
+            ("Age:",1,0,1,1, combo_value_age),
+            ("Sex", 2,0,2,1, combo_value_sex)
+        ]
+
+        button_info_registration = [
+            ("GENERATE","ADD",42,6,0,6,1,self.command_one,self.command_one),
+            ("UPDATE","DELETE",42,7,0,7,1,self.command_one,self.command_one)
         ]
 
         self.manage_registration.label_entry_manage_boat(info_labels_entries)
         self.manage_registration.label_combo_box(info_labels_combo_box)
+        self.manage_registration.manage_button(button_info_registration)
 
         self.manage_registration.place(x=0,y=0, relwidth=1, relheight=1)
+
+    def command_one(self):
+        print(self.manage_registration.get_combo_box_values())

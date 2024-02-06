@@ -25,8 +25,8 @@ class LabelEntryManageBoat(ctk.CTkFrame):
             self.entry_widget.append(manage_boat_entry)
 
     def label_combo_box(self, labels_and_combo_box):
-        combo_values = ["Male", "Female"]
-        for index, (label_text_combo, row_label, cols_label, row_combo, cols_combo) in enumerate(labels_and_combo_box):
+        
+        for index, (label_text_combo, row_label, cols_label, row_combo, cols_combo, combo_values) in enumerate(labels_and_combo_box):
 
             label_combo = FunctionalWidgets.create_label(self, label_text_combo)
             combo_box = FunctionalWidgets.create_combo_box(self,combo_values)
