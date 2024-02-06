@@ -22,3 +22,7 @@ class FunctionalWidgets(ctk.CTk):
     def create_combo_box(window, value, **kwargs):
         combo_box = ctk.CTkComboBox(window, values=value, **kwargs)
         return combo_box
+    
+    def create_frame(window, **kwargs):
+        frame = ctk.CTkFrame(window, **kwargs)
+        return frame
