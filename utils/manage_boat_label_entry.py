@@ -5,6 +5,7 @@ class LabelEntryManageBoat(ctk.CTkFrame):
     def __init__(self,parent):
         super().__init__(parent)
         self.entry_widget = []    
+        self.combo_box_widget = []
 
         # self.pack(fill="both", expand=True)
         
@@ -23,6 +24,21 @@ class LabelEntryManageBoat(ctk.CTkFrame):
 
             self.entry_widget.append(manage_boat_entry)
 
+    def label_combo_box(self, labels_and_combo_box):
+        combo_values = ["Male", "Female"]
+        for index, (label_text_combo, row_label, cols_label, row_combo, cols_combo) in enumerate(labels_and_combo_box):
+
+            label_combo = FunctionalWidgets.create_label(self, label_text_combo)
+            combo_box = FunctionalWidgets.create_combo_box(self,combo_values)
+
+            self.columnconfigure(0, weight=1)
+            self.columnconfigure(1, weight=3)
+
+            label_combo.grid(row=row_label, column=cols_label, padx=30, pady=20, sticky="w")
+            combo_box.grid(row=row_combo, column=cols_combo,padx=5, pady=20, sticky="we")
+
+            self.combo_box_widget.append(combo_box)
+
     def manage_button(self, button_info):
         for i, (text_one, text_two, button_size, row_btn_one, cols_button_one,row_button_two, cols_button_two,command_one_1, command_two_2) in enumerate(button_info):
             # CREATE WIDGETS
@@ -37,3 +53,6 @@ class LabelEntryManageBoat(ctk.CTkFrame):
 
     def get_entry_values(self):
         return [entry.get() for entry in self.entry_widget]
+    
+    def get_combo_box_values(self):
+        return[combo.get() for combo in self.combo_box_widget]

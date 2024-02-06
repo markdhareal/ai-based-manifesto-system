@@ -33,4 +33,10 @@ class ManageBoatRegistrationFrame(ctk.CTkFrame):
         self.label_entry_manager.place(x=0,y=0,relwidth=1,relheight=1)
 
     def command_one(self):
-        print(self.label_entry_manager.get_entry_values())
+        # print(self.label_entry_manager.get_entry_values())
+        entry_one, entry_two, entry_three, entry_four, entry_five = self.label_entry_manager.get_entry_values()
+        print(entry_one)
+        print(entry_two)
+        print(entry_three)
+        print(entry_four)
+        print(entry_five)
