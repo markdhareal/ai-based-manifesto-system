@@ -6,7 +6,7 @@ class RegistrationCamera(ctk.CTkFrame):
         super().__init__(parent)
 
         self.create_widgets_registration_camera()
-        self.pack(fill="both", expand=True)
+        self.pack(side="top",fill="both", expand=True)
 
     def create_widgets_registration_camera(self):
         camera_frame = FunctionalWidgets.create_frame(self)
@@ -15,7 +15,7 @@ class RegistrationCamera(ctk.CTkFrame):
         label_one = ctk.CTkLabel(camera_frame, fg_color="blue")
         label_one.pack(fill="both", expand=True)
 
-        label_two = ctk.CTkLabel(loading_frame, fg_color="red")
+        label_two = ctk.CTkLabel(loading_frame,text="100%", anchor=ctk.CENTER)
         label_two.pack(fill="both", expand=True)
 
         camera_frame.pack(side="left", fill="both", expand=True)

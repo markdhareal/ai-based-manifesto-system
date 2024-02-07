@@ -7,15 +7,16 @@ class RegistrationTreeview(ctk.CTkFrame):
         
         self.create_widgets_registration_treeview()
 
-        self.pack(fill="both", expand=True)
+        self.pack(side="top",fill="both")
 
     def create_widgets_registration_treeview(self):
         self.tree = MyTreeView(self)
 
         info = [
             ("Name"),
-            ("Weight"),
             ("Age"),
+            ("Weight"),
+            ("Sex"),
             ("Address"),
             ("Contact Number")
         ]
@@ -23,7 +24,7 @@ class RegistrationTreeview(ctk.CTkFrame):
         self.tree.create_tree_view(info)
         self.tree.pack(fill="both", expand=True)
 
-        item_values = ("John Doe", "Speedy Boat", "Captain Doe", "10", "5")
+        item_values = ("Tristan Stephen Nido", "11-15", "49", "Male", "Bangad", "00000000000")
         self.tree.add_item(item_values)
         self.tree.add_item(item_values)
         self.tree.add_item(item_values)
