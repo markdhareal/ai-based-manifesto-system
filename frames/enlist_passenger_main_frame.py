@@ -5,7 +5,8 @@ class EnlistPassengerMainFrame(ctk.CTkFrame):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.place(relx=0.3, y=0, relwidth=0.7, relheight=1)
+        # self.place(relx=0.3, y=0, relwidth=0.7, relheight=1)
+        self.pack(side="top", fill="both")
         self.create_treeview_enlist_passenger_main()
         # self.label = ctk.CTkLabel(self, fg_color="red").pack(fill="both", expand=True)
 
