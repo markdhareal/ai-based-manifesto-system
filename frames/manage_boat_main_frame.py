@@ -9,7 +9,6 @@ class ManageBoatMainFrame(ctk.CTkFrame):
         self.place(relx = 0.3, y = 0, relwidth = 0.7, relheight=1)
         self.create_tree()
 
-        # self.tree = MyTreeView(self)
 
     def create_tree(self):
         self.tree = MyTreeView(self)

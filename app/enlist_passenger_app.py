@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from frames.enlist_passenger_frame import EnlistPassengerFrame
+from frames.enlist_passenger_main_frame import EnlistPassengerMainFrame
 
 class EnlistPassengerApp(ctk.CTk):
     def __init__(self,title):
@@ -13,6 +14,7 @@ class EnlistPassengerApp(ctk.CTk):
         self.minsize(self.width, self.height)
 
         self.enlist_passenger_frame = EnlistPassengerFrame(self)
+        self.enlist_passenger_main_frame = EnlistPassengerMainFrame(self)
         self.after(0, lambda:self.state("zoomed"))
 
         self.mainloop()
