@@ -13,8 +13,8 @@ class ManageBoat(ctk.CTk):
         self.geometry("%dx%d+0+0" % (self.width, self.height))
         self.minsize(self.width, self.height)
 
-        self.manage_boat_menu = ManageBoatRegistrationFrame(self)
         self.manage_boat_main = ManageBoatMainFrame(self)
+        self.manage_boat_menu = ManageBoatRegistrationFrame(self, self.manage_boat_main.tree)
         self.after(0, lambda:self.state("zoomed"))
 
         self.mainloop()

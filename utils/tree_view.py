@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 import customtkinter as ctk
+from database import database_manager
 
 class MyTreeView(ctk.CTkFrame):
     def __init__(self,parent):
@@ -19,7 +20,7 @@ class MyTreeView(ctk.CTkFrame):
 
     def set_up_style(self):
         style = ttk.Style(self)
-        style.theme_use('alt')
+        style.theme_use('clam')
         style.configure('Treeview', font=("Arial Bold", 15),background="gray14", foreground="#fff", fieldbackground="gray14", rowheight=50)
         style.configure('Treeview.Heading', font=("Arial Bold", 15))
         style.map('Treeview', background=[('selected', '#3B8ED0')])
@@ -39,6 +40,12 @@ class MyTreeView(ctk.CTkFrame):
             self.my_tree.heading(column, text=info_heading_and_column)
 
         self.my_tree.pack(fill="both", expand=True)
+
+    def add_to_treeview(self):
+        boats = database_manager.fetch_boat()
+        self.my_tree.delete(*self.my_tree.get_children())
+        for boat in boats:
+            self.my_tree.insert('', ctk.END, values = boat)
 
     def add_item(self, values):
         self.my_tree.insert("", "end", values=values)

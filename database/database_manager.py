@@ -52,7 +52,7 @@ def create_table():
         password=""
     )
     query = '''
-        CREATE TABLE IF NOT EXISTS Passengers (
+        CREATE TABLE IF NOT EXISTS Boats (
         boat VARCHAR(255) PRIMARY KEY,
         owner TEXT,
         captain TEXT,
@@ -70,7 +70,7 @@ def fetch_boat():
         user="root",
         password=""
     )
-    query_boat = 'SELECT * FROM Passengers'
+    query_boat = 'SELECT * FROM Boats'
     cur = connection.cursor()
     cur.execute(query_boat)
     boats = cur.fetchall()
@@ -84,20 +84,20 @@ def insert_boat(boat, owner, captain, capacity, crew):
         user="root",
         password=""
     )
-    query_insert_boat = 'INSERT INTO Passengers (boat, owner, captain, capacity, crew) VALUES (?, ?, ?, ?, ?)',(boat, owner, captain, capacity, crew)
+    query_insert_boat = 'INSERT INTO Boats (boat, owner, captain, capacity, crew) VALUES (%s, %s, %s, %s, %s)'
     cur = connection.cursor()
-    cur.execute(query_insert_boat)
+    cur.execute(query_insert_boat,(boat, owner, captain, capacity, crew))
     connection.commit()
     connection.close()
 
-def delete_boat(name):
+def delete_boat(boat):
     connection = mysql.connector.connect(
         host="localhost",
         database="face_recognition_db",
         user="root",
         password=""
     )
-    query_delete_boat = 'DELETE FROM Passengers WHERE name = ?', (name,) # baka babaguhin yung name baka maging id
+    query_delete_boat = 'DELETE FROM Boats WHERE boat = %s', (boat,) # baka babaguhin yung name baka maging id
     cur = connection.cursor()
     cur.execute(query_delete_boat)
     connection.commit()
@@ -110,22 +110,22 @@ def update_boat(new_owner, new_captain, new_capacity, new_crew, boat):
         user="root",
         password=""
     )
-    query_update_boat = 'UPDATE Passengers SET owner = ?, captain = ?, capacity = ?, crew = ? WHERE boat = ?', (new_owner, new_captain, new_capacity, new_crew, boat)
+    query_update_boat = 'UPDATE Boats SET owner = %s, captain = %s, capacity = %s, crew = %s WHERE boat = %s'
     cur = connection.cursor()
-    cur.execute(query_update_boat)
+    cur.execute(query_update_boat, (new_owner, new_captain, new_capacity, new_crew, boat))
     connection.commit()
     connection.close()
 
-def name_exists(name):
+def name_exists(boat):
     connection = mysql.connector.connect(
         host="localhost",
         database="face_recognition_db",
         user="root",
         password=""
     )
-    query_name_exists = 'SELECT COUNT(*) FROM Passengers WHERE name = ?', (name,)
+    query_name_exists = 'SELECT COUNT(*) FROM Boats WHERE boat = %s'
     cur = connection.cursor()
-    cur.execute(query_name_exists)
+    cur.execute(query_name_exists, (boat,))
     result = cur.fetchone()
     connection.close()
     return result[0] > 0
