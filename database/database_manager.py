@@ -1,4 +1,5 @@
 import mysql.connector
+from mysql.connector import errorcode
 # from mysql.connector import Error
 
 # try:
@@ -90,6 +91,20 @@ def insert_boat(boat, owner, captain, capacity, crew):
     connection.commit()
     connection.close()
 
+def search(boat):
+    connection = mysql.connector.connect(
+        host="localhost",
+        database="face_recognition_db",
+        user="root",
+        password=""
+    )
+    query_to_search = 'SELECT * FROM Boats WHERE boat LIKE %s'
+    cur = connection.cursor()
+    cur.execute(query_to_search, (f"%{boat}",))
+    item_name = cur.fetchall()
+    connection.close()
+    return item_name
+
 def delete_boat(boat):
     connection = mysql.connector.connect(
         host="localhost",
@@ -97,11 +112,31 @@ def delete_boat(boat):
         user="root",
         password=""
     )
-    query_delete_boat = 'DELETE FROM Boats WHERE boat = %s', (boat,) # baka babaguhin yung name baka maging id
+    query_delete_boat = 'DELETE FROM Boats WHERE boat = %s' # baka babaguhin yung name baka maging id
     cur = connection.cursor()
-    cur.execute(query_delete_boat)
+    cur.execute(query_delete_boat, (boat,))
     connection.commit()
     connection.close()
+
+# def delete_boat(boat):
+#     try:
+#         connection = mysql.connector.connect(
+#             host="localhost",
+#             database="face_recognition_db",
+#             user="root",
+#             password=""
+#         )
+#         query_delete_boat = 'DELETE FROM Boats WHERE boat = %s' # baka babaguhin yung name baka maging id
+#         cur = connection.cursor()
+#         cur.execute(query_delete_boat, (boat,))
+#         connection.commit()
+#         connection.close()
+#     except mysql.connector.Error as err:
+#         if err.errno == errorcode.CR_SERVER_LOST:
+#             print("Lost connection to MySQL server. Reconnecting...")
+#             # You might want to attempt to reconnect here or handle it based on your application logic.
+#         else:
+#             print(f"Error: {err}")
 
 def update_boat(new_owner, new_captain, new_capacity, new_crew, boat):
     connection = mysql.connector.connect(

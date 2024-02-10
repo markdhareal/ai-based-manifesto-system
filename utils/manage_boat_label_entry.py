@@ -56,3 +56,12 @@ class LabelEntryManageBoat(ctk.CTkFrame):
     
     def get_combo_box_values(self):
         return[combo.get() for combo in self.combo_box_widget]
+    
+    def clear_entry_values(self):
+        for entry in self.entry_widget:
+            entry.delete(0,ctk.END)
+
+    def set_entry_values(self, values):
+        for entry, value in zip(self.entry_widget, values):
+            entry.delete(0, ctk.END)
+            entry.insert(0, value)
